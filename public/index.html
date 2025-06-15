@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ollama Web Interface</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🦙 Ollama Web Interface</h1>
+            <p>Chat with AI models through Ollama API</p>
+        </header>
+
+        <div class="main-content">
+            <div class="sidebar">
+                <div class="model-selection">
+                    <h3>Select Model</h3>
+                    <select id="modelSelect" disabled>
+                        <option value="">Loading models...</option>
+                    </select>
+                    <button id="refreshModels">🔄 Refresh</button>
+                </div>
+
+                <div class="settings">
+                    <h3>Settings</h3>
+                    <div class="setting-group">
+                        <label for="temperature">Temperature: <span id="tempValue">0.7</span></label>
+                        <input type="range" id="temperature" min="0" max="1" step="0.1" value="0.7">
+                    </div>
+                    <div class="setting-group">
+                        <label for="maxTokens">Max Tokens:</label>
+                        <input type="number" id="maxTokens" value="1000" min="1" max="4000">
+                    </div>
+                </div>
+
+                <div class="status">
+                    <h3>Status</h3>
+                    <div id="statusIndicator" class="status-indicator">
+                        <span class="status-dot"></span>
+                        <span id="statusText">Checking...</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="chat-area">
+                <div class="chat-container">
+                    <div id="chatMessages" class="chat-messages">
+                        <div class="welcome-message">
+                            <h3>Welcome to Ollama Web Interface!</h3>
+                            <p>Select a model from the sidebar and start chatting with AI.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="input-area">
+                    <div class="input-container">
+                        <textarea 
+                            id="messageInput" 
+                            placeholder="Type your message here..." 
+                            rows="3"
+                            disabled
+                        ></textarea>
+                        <button id="sendButton" disabled>
+                            <span id="sendText">Send</span>
+                            <div id="sendSpinner" class="spinner" style="display: none;"></div>
+                        </button>
+                    </div>
+                    <button id="clearChat" class="clear-button">Clear Chat</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
